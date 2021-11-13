@@ -70,6 +70,14 @@ MODULE_PARM_DESC(zen1_calc, "Set to 1 to use ZEN1 calculation");
 #define PCI_DEVICE_ID_AMD_19H_DF_F3         0x1653
 #endif
 
+#ifndef PCI_DEVICE_ID_AMD_19H_M40H_DF_F4
+#define PCI_DEVICE_ID_AMD_19H_M40H_DF_F4 0x167d
+#endif
+
+#ifndef PCI_DEVICE_ID_AMD_19H_M50H_DF_F4
+#define PCI_DEVICE_ID_AMD_19H_M50H_DF_F4 0x166e
+#endif
+
 /* F17H_M01H_SVI, should be renamed to something generic I think... */
 
 #define F17H_M01H_REPORTED_TEMP_CTRL        0x00059800
@@ -723,6 +731,8 @@ static const struct pci_device_id zenpower_id_table[] = {
 	{ PCI_VDEVICE(AMD, PCI_DEVICE_ID_AMD_17H_M60H_DF_F3) },
 	{ PCI_VDEVICE(AMD, PCI_DEVICE_ID_AMD_17H_M70H_DF_F3) },
 	{ PCI_VDEVICE(AMD, PCI_DEVICE_ID_AMD_19H_DF_F3) },
+	{ PCI_VDEVICE(AMD, PCI_DEVICE_ID_AMD_19H_M40H_DF_F3) },
+	{ PCI_VDEVICE(AMD, PCI_DEVICE_ID_AMD_19H_M50H_DF_F3) },
 	{}
 };
 MODULE_DEVICE_TABLE(pci, zenpower_id_table);
