@@ -70,12 +70,12 @@ MODULE_PARM_DESC(zen1_calc, "Set to 1 to use ZEN1 calculation");
 #define PCI_DEVICE_ID_AMD_19H_DF_F3         0x1653
 #endif
 
-#ifndef PCI_DEVICE_ID_AMD_19H_M40H_DF_F4
-#define PCI_DEVICE_ID_AMD_19H_M40H_DF_F4 0x167d
+#ifndef PCI_DEVICE_ID_AMD_19H_M40H_DF_F3
+#define PCI_DEVICE_ID_AMD_19H_M40H_DF_F3 0x167d
 #endif
 
-#ifndef PCI_DEVICE_ID_AMD_19H_M50H_DF_F4
-#define PCI_DEVICE_ID_AMD_19H_M50H_DF_F4 0x166e
+#ifndef PCI_DEVICE_ID_AMD_19H_M50H_DF_F3
+#define PCI_DEVICE_ID_AMD_19H_M50H_DF_F3 0x166e
 #endif
 
 /* F17H_M01H_SVI, should be renamed to something generic I think... */
