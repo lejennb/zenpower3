@@ -20,7 +20,7 @@ sudo make dkms-install
 You can install the [AUR package](https://aur.archlinux.org/packages/zenpower3-dkms/).
 
 ## Module activation
-Because zenpower is using same PCI device as k10temp, you have to disable k10temp first.
+Because zenpower is using same PCI device as k10temp, you have to disable k10temp first. This is automatically done by the AUR package.
 
 1. Check if k10temp is active. `lsmod | grep k10temp`
 2. Unload k10temp `sudo modprobe -r k10temp`
@@ -30,7 +30,7 @@ Because zenpower is using same PCI device as k10temp, you have to disable k10tem
 *If k10temp is not blacklisted, you may have to manually unload k10temp after each restart.
 
 ## Sensors monitoring
-You can use this app: [zenmonitor](https://github.com/ocerman/zenmonitor), or your favourie sensors monitoring software
+You can use the `sensors` command, [zenmonitor3](https://github.com/Ta180m/zenmonitor3), or your favorite sensors monitoring software.
 
 ## Update instructions
 1. Unload zenpower `sudo modprobe -r zenpower`
