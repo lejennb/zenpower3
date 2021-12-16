@@ -82,10 +82,13 @@ MODULE_PARM_DESC(zen1_calc, "Set to 1 to use ZEN1 calculation");
 
 #define F17H_M01H_REPORTED_TEMP_CTRL        0x00059800
 #define F17H_M01H_SVI                       0x0005A000
+#define F17H_M02H_SVI                       0x0006F000
 #define F17H_M01H_SVI_TEL_PLANE0            (F17H_M01H_SVI + 0xC)
 #define F17H_M01H_SVI_TEL_PLANE1            (F17H_M01H_SVI + 0x10)
 #define F17H_M30H_SVI_TEL_PLANE0            (F17H_M01H_SVI + 0x14)
 #define F17H_M30H_SVI_TEL_PLANE1            (F17H_M01H_SVI + 0x10)
+#define F17H_M60H_SVI_TEL_PLANE0            (F17H_M02H_SVI + 0x38)
+#define F17H_M60H_SVI_TEL_PLANE1            (F17H_M02H_SVI + 0x3C)
 #define F17H_M70H_SVI_TEL_PLANE0            (F17H_M01H_SVI + 0x10)
 #define F17H_M70H_SVI_TEL_PLANE1            (F17H_M01H_SVI + 0xC)
 /* ZEN3 SP3/TR */
@@ -95,8 +98,8 @@ MODULE_PARM_DESC(zen1_calc, "Set to 1 to use ZEN1 calculation");
 #define F19H_M21H_SVI_TEL_PLANE0            (F17H_M01H_SVI + 0x10)
 #define F19H_M21H_SVI_TEL_PLANE1            (F17H_M01H_SVI + 0xC)
 /* ZEN3 APU */
-#define F19H_M50H_SVI_TEL_PLANE0            (F17H_M01H_SVI + 0xC)
-#define F19H_M50H_SVI_TEL_PLANE1            (F17H_M01H_SVI + 0x10)
+#define F19H_M50H_SVI_TEL_PLANE0            (F17H_M02H_SVI + 0x38)
+#define F19H_M50H_SVI_TEL_PLANE1            (F17H_M02H_SVI + 0x3C)
 
 #define F17H_M70H_CCD_TEMP(x)               (0x00059954 + ((x) * 4))
 
@@ -242,7 +245,7 @@ int static debug_addrs_arr[] = {
 	F17H_M01H_SVI + 0x14, 0x000598BC, 0x0005994C, F17H_M70H_CCD_TEMP(0),
 	F17H_M70H_CCD_TEMP(1), F17H_M70H_CCD_TEMP(2), F17H_M70H_CCD_TEMP(3),
 	F17H_M70H_CCD_TEMP(4), F17H_M70H_CCD_TEMP(5), F17H_M70H_CCD_TEMP(6),
-	F17H_M70H_CCD_TEMP(7)
+	F17H_M70H_CCD_TEMP(7), F17H_M02H_SVI + 0x38, F17H_M02H_SVI + 0x3C
 };
 
 static ssize_t debug_data_show(struct device *dev,
@@ -644,6 +647,10 @@ static int zenpower_probe(struct pci_dev *pdev, const struct pci_device_id *id)
 				} else {
 					dev_info(dev, "Using ZEN1 calculation formula.\n");
 				}
+				data->amps_visible = true;
+				data->svi_core_addr = F17H_M60H_SVI_TEL_PLANE0;
+				data->svi_soc_addr = F17H_M60H_SVI_TEL_PLANE1;
+				ccd_check = 8;
 				break;
 
 			case 0x71: // Zen2 Ryzen
