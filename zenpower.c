@@ -1,7 +1,7 @@
 /*
  * Zenpower - Driver for reading temperature, voltage, current and power for AMD 17h CPUs
  *
- * Copyright (c) 2018-2020 Ondrej Čerman
+ * Copyright (c) 2018-2021 Anthony Wang
  *
  * This driver is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License; either
@@ -18,6 +18,8 @@
  */
 
 /*
+ * forked from the original zenpower by Ondrej Čerman
+ *
  * based on k10temp by Clemens Ladisch
  *
  * Docs:
@@ -36,9 +38,9 @@
 #include <asm/amd_nb.h>
 
 MODULE_DESCRIPTION("AMD ZEN family CPU Sensors Driver");
-MODULE_AUTHOR("Ondrej Čerman");
+MODULE_AUTHOR("Anthony Wang");
 MODULE_LICENSE("GPL");
-MODULE_VERSION("0.1.12-ZEN3-test4");
+MODULE_VERSION("0.2.0");
 
 static bool zen1_calc;
 module_param(zen1_calc, bool, 0);
