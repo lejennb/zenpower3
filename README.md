@@ -19,6 +19,9 @@ sudo make dkms-install
 ### Installation for Arch
 You can install the [AUR package](https://aur.archlinux.org/packages/zenpower3-dkms/).
 
+### Installation for Fedora 35+
+You can install it from the [copr package repo](https://copr.fedorainfracloud.org/coprs/birkch/zenpower3/)
+
 ## Module activation
 Because zenpower is using same PCI device as k10temp, you have to disable k10temp first. This is automatically done by the AUR package.
 
