@@ -46,7 +46,6 @@ static bool zen1_calc;
 module_param(zen1_calc, bool, 0);
 MODULE_PARM_DESC(zen1_calc, "Set to 1 to use ZEN1 calculation");
 
-
 #ifndef PCI_DEVICE_ID_AMD_17H_DF_F3
 #define PCI_DEVICE_ID_AMD_17H_DF_F3         0x1463
 #endif
@@ -137,6 +136,11 @@ struct tctl_offset {
 	char const *id;
 	int offset;
 };
+
+static u16 amd_pci_dev_to_node_id(struct pci_dev *pdev)
+{
+    return PCI_SLOT(pdev->devfn) - AMD_NODE0_PCI_SLOT;
+}
 
 static const struct tctl_offset tctl_offset_table[] = {
 	{ 0x17, "AMD Ryzen 5 1600X", 20000 },
@@ -242,7 +246,7 @@ static unsigned int get_ccd_temp(struct zenpower_data *data, u32 ccd_addr)
 	return (regval & 0xfff) * 125 - 305000;
 }
 
-int static debug_addrs_arr[] = {
+static int debug_addrs_arr[] = {
 	F17H_M01H_SVI + 0x8, F17H_M01H_SVI + 0xC, F17H_M01H_SVI + 0x10,
 	F17H_M01H_SVI + 0x14, 0x000598BC, 0x0005994C, F17H_M70H_CCD_TEMP(0),
 	F17H_M70H_CCD_TEMP(1), F17H_M70H_CCD_TEMP(2), F17H_M70H_CCD_TEMP(3),
