@@ -5,22 +5,19 @@ Make sure that your Linux kernel have support for your CPUs as Zenpower is using
 For AMD family 17h Model 70h (Ryzen 3000) CPUs you need kernel version 5.3.4 or newer or kernel with this patch: https://patchwork.kernel.org/patch/11043277/
 
 ## Installation
-You can install this module via DKMS.
+You can install this module via DKMS. The following example is for Ubuntu/Mint, but the process would be similar on other distributions.
 
-### Installation for Ubuntu
 ```sh
-sudo apt install dkms git build-essential linux-headers-$(uname -r)
+sudo apt install dkms git build-essential
+
+# If you have a standard distribution kernel package, also install:
+sudo apt install linux-headers-$(uname -r)
+
 cd ~
-git clone https://github.com/Ta180m/zenpower3.git
+git clone https://github.com/lejennb/zenpower3
 cd zenpower3
 sudo make dkms-install
 ```
-
-### Installation for Arch
-You can install the [AUR package](https://aur.archlinux.org/packages/zenpower3-dkms/).
-
-### Installation for Fedora 35+
-You can install it from the [copr package repo](https://copr.fedorainfracloud.org/coprs/birkch/zenpower3/)
 
 ## Module activation
 Because zenpower is using same PCI device as k10temp, you have to disable k10temp first. This is automatically done by the AUR package.
@@ -33,7 +30,7 @@ Because zenpower is using same PCI device as k10temp, you have to disable k10tem
 *If k10temp is not blacklisted, you may have to manually unload k10temp after each restart.
 
 ## Sensors monitoring
-You can use the `sensors` command, [zenmonitor3](https://github.com/Ta180m/zenmonitor3), or your favorite sensors monitoring software.
+You can use the `sensors` command, [zenmonitor3](https://github.com/lejennb/zenmonitor3), or your favorite sensors monitoring software.
 
 ## Update instructions
 1. Unload zenpower `sudo modprobe -r zenpower`
