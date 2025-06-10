@@ -30,7 +30,7 @@ Because zenpower is using same PCI device as k10temp, you have to disable k10tem
 *If k10temp is not blacklisted, you may have to manually unload k10temp after each restart.
 
 ## Sensors monitoring
-You can use the `sensors` command, [zenmonitor3](https://github.com/lejennb/zenmonitor3), or your favorite sensors monitoring software.
+You can use the `sensors` command, [zenmonitor3](https://github.com/ocerman/zenmonitor3), or your favorite sensors monitoring software.
 
 ## Update instructions
 1. Unload zenpower `sudo modprobe -r zenpower`
